@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student Information</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<body class="bg-dark p-2 text-dark bg-opacity-25">
+    <div class="container mt-4">
+            {{#if message}}
+                <h4 class="alert alert-danger mt-4">{{message}}</h4>
+            {{/if}}
+
+        <div class="card" style="width: 40rem; margin: 100px auto;">
+            <div class="card-header text-center p-3">
+                <h1>Student Information</h1>
+            </div>
+
+            <div class="card-body">
+                <form action="/auth/update-user" method="post">
+                {{#each student}}
+                        <div class="mb-3">
+                            <label for="first_name" class="form-label">First Name: </label>
+                            <input type="text" name="first_name" id="first_name" value="{{this.first_name}}" class="form-control" required> 
+                        </div>
+                            
+                        <div class="mb-3">
+                            <label for="last_name" class="form-label">Last Name: </label>
+                            <input type="text" name="last_name" id="last_name" value="{{this.last_name}}" class="form-control" required> 
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="course" class="form-label">Course: </label>
+                            <select name="course_id" id="course_id" class="form-select">
+                                <option value="1">Front-End Development</option>
+                                <option value="2">Back-End Development</option>
+                                <option value="3">Full-Stack Development</option>
+                            </select>
+                        </div>
+                            
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email: </label>
+                            <input type="email" name="email" id="email" value="{{this.email}}" class="form-control" required readonly> 
+                        </div>
+                    <button type="submit" class="btn btn-primary form-control">Update</button>
+                {{/each}}
+                </form>
+            </div>
+        </div>
+    </div>
+    
+     <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+</body>
+</html>
